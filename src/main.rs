@@ -5,6 +5,7 @@ use std::fs::File;
 use std::io::{prelude::*, BufReader};
 use std::path::Path;
 use rand::prelude::*;
+use whoami::username;
 
 fn lines_from_file(filename: impl AsRef<Path>) -> Vec<String> {
     let file = File::open(filename).expect("No such file :(");
@@ -15,6 +16,8 @@ fn lines_from_file(filename: impl AsRef<Path>) -> Vec<String> {
 }
 
 fn main() {
+    let username = username();
+    println!("Heisann, {username}");
     let words = lines_from_file("src/norwegian.txt");
     println!("Ordboken har {:?} ord", words.len());
     let mut rng = rand::rng();
