@@ -7,6 +7,7 @@ use std::io::{prelude::*, BufReader};
 use std::path::Path;
 use rand::prelude::*;
 use whoami::username;
+use chrono::Local;
 
 fn lines_from_file(filename: impl AsRef<Path>) -> Vec<String> {
     let file = File::open(filename).expect("No such file :(");
@@ -67,6 +68,7 @@ fn main() {
     let user_time = stopwatch.s();
     let amount_of_words = amount_of_characters.len() / 5;
     let words_per_minute = amount_of_words as f32 / user_time as f32 * 60.0;
+    let local_time = Local::now().format("%Y-%m-%d %H:%M:%S").to_string();
 
     // hvis burkeren skrev riktig :)
     if user_text.trim_end() == text {
@@ -77,5 +79,6 @@ fn main() {
     // hvis brukeren skrev feil :(
     else {
         println!("Det du skrev matchet ikke det du skulle skrive. Bad boy.");
+        write!(results_file, "Brukernavn: {:?} \nTid: {:?}\nResultat: SKRIVETEST FEILET \n", username, local_time).expect("Kunne ikke skrive :(");
     }
 }
