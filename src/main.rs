@@ -20,4 +20,13 @@ fn main() {
     std::thread::sleep(Duration::from_millis(1000));
     println!("1..");
     std::thread::sleep(Duration::from_millis(1000));
+
+    println!("Yo, du skal skrive dette:\njeg heter jonas gahr støre");
+    let mut stopwatch = Stopwatch::start_new();
+    let mut user_text = String::new();
+    io::stdin()
+        .read_line(&mut user_text)
+        .expect("Failed to read line");
+    let userTime = stopwatch.s();
+    println!("Du brukte {userTime} sekunder på å skrive det.");
 }
