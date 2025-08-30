@@ -37,7 +37,7 @@ fn main() {
     // henter hvor mye tid brukeren brukte på å skrive
     let user_time = stopwatch.s();
     let amount_of_words = amount_of_characters.len() / 5;
-    let words_per_minute = amount_of_words as i32 / user_time as i32 * 60;
+    let words_per_minute = amount_of_words as f32 / user_time as f32 * 60.0;
 
     // hvis burkeren skrev riktig :)
     if user_text.trim_end() == text {
