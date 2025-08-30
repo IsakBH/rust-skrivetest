@@ -1,8 +1,22 @@
 use simple_stopwatch::Stopwatch;
 use std::io;
 use std::time::Duration;
+use std::fs::File;
+use std::io::{prelude::*, BufReader};
+use std::path::Path;
+
+fn lines_from_file(filename: impl AsRef<Path>) -> Vec<String> {
+    let file = File::open(filename).expect("No such file :(");
+    let buf = BufReader::new(file);
+    buf.lines()
+        .map(|l| l.expect("Could not parse line :("))
+        .collect()
+}
 
 fn main() {
+    let words = lines_from_file("src/norwegian.txt");
+    println!("Ordboken har {:?} ord", words.len());
+
     // spør om brukeren er klar for å skrive
     println!("Er du klar for å skrive? (Trykk enter)");
     let mut ready = String::new();
