@@ -1,6 +1,6 @@
 use simple_stopwatch::Stopwatch;
-use std::time::Duration;
 use std::io;
+use std::time::Duration;
 
 fn main() {
     println!("Er du klar for å skrive?");
@@ -21,12 +21,18 @@ fn main() {
     println!("1..");
     std::thread::sleep(Duration::from_millis(1000));
 
-    println!("Yo, du skal skrive dette:\njeg heter jonas gahr støre");
+    let text = "hei. jeg heter jonas gahr støre.";
+    println!("Yo, du skal skrive dette:\n{text}");
     let mut stopwatch = Stopwatch::start_new();
     let mut user_text = String::new();
     io::stdin()
         .read_line(&mut user_text)
         .expect("Failed to read line");
     let user_time = stopwatch.s();
-    println!("Du brukte {user_time} sekunder på å skrive det.");
+    if(user_text == text) {
+        println!("Du brukte {user_time} sekunder på å skrive det.");
+    }
+    else {
+        println!("Det du skrev matchet ikke det du skulle skrive. Bad boy.");
+    }
 }
