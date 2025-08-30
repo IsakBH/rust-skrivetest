@@ -24,7 +24,7 @@ fn main() {
     std::thread::sleep(Duration::from_millis(1000));
 
     let text = "hei. jeg heter jonas gahr støre.";
-    let amount_of_words: Vec<_> = text.split(" ").collect();
+    let amount_of_characters: Vec<_> = text.split("").collect();
     println!("Yo, du skal skrive dette:\n{text}");
     let stopwatch = Stopwatch::start_new();
 
@@ -36,11 +36,14 @@ fn main() {
 
     // henter hvor mye tid brukeren brukte på å skrive
     let user_time = stopwatch.s();
+    let amount_of_words = amount_of_characters.len() / 5;
+    let words_per_minute = amount_of_words as i32 / user_time as i32 * 60;
 
     // hvis burkeren skrev riktig :)
     if user_text.trim_end() == text {
         println!("Du brukte {user_time} sekunder på å skrive det.");
-        println!("Du skrev {:?} ord.", amount_of_words.len());
+        println!("Du skrev {:?} bokstaver.", amount_of_characters.len());
+        println!("Ord i minuttet: {words_per_minute}");
     }
     // hvis brukeren skrev feil :(
     else {
