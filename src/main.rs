@@ -27,6 +27,6 @@ fn main() {
     io::stdin()
         .read_line(&mut user_text)
         .expect("Failed to read line");
-    let userTime = stopwatch.s();
-    println!("Du brukte {userTime} sekunder på å skrive det.");
+    let user_time = stopwatch.s();
+    println!("Du brukte {user_time} sekunder på å skrive det.");
 }
