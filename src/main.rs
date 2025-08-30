@@ -2,6 +2,7 @@ use simple_stopwatch::Stopwatch;
 use std::io;
 use std::time::Duration;
 use std::fs::File;
+use std::fs::OpenOptions;
 use std::io::{prelude::*, BufReader};
 use std::path::Path;
 use rand::prelude::*;
@@ -18,10 +19,18 @@ fn lines_from_file(filename: impl AsRef<Path>) -> Vec<String> {
 fn main() {
     let username = username();
     println!("Heisann, {username}");
+
     let words = lines_from_file("src/norwegian.txt");
     println!("Ordboken har {:?} ord", words.len());
+
     let mut rng = rand::rng();
     let selection: Vec<_> = words.choose_multiple(&mut rng, 10).cloned().collect();
+
+    let mut results_file = OpenOptions::new()
+        .create(true)
+        .append(true)
+        .open("results/speeds.txt")
+        .expect("No such file :(");
 
     // spør om brukeren er klar for å skrive
     println!("Er du klar for å skrive? (Trykk enter)");
