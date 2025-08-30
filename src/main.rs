@@ -23,7 +23,7 @@ fn main() {
 
     let text = "hei. jeg heter jonas gahr støre.";
     println!("Yo, du skal skrive dette:\n{text}");
-    let mut stopwatch = Stopwatch::start_new();
+    let stopwatch = Stopwatch::start_new();
     let mut user_text = String::new();
     io::stdin()
         .read_line(&mut user_text)
