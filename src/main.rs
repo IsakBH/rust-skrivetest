@@ -29,7 +29,7 @@ fn main() {
         .read_line(&mut user_text)
         .expect("Failed to read line");
     let user_time = stopwatch.s();
-    if(user_text == text) {
+    if user_text.trim_end() == text {
         println!("Du brukte {user_time} sekunder på å skrive det.");
     }
     else {
