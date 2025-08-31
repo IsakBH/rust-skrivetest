@@ -75,7 +75,7 @@ fn main() {
         println!("Du brukte {user_time} sekunder på å skrive det.");
         println!("Du skrev {:?} bokstaver.", amount_of_characters.len());
         println!("Ord i minuttet: {words_per_minute}");
-        write!(results_file, "Brukernavn: {:?} \nTid: {:?}\nResultat: {:?} \nOrd skrevet: {:?}\n \n", username, local_time, words_per_minute, text).expect("Kunne ikke skrive :(")
+        write!(results_file, "Brukernavn: {:?} \nTid: {:?}\nResultat: {:?} WPM\nOrd skrevet: {:?}\n \n", username, local_time, words_per_minute, text).expect("Kunne ikke skrive :(")
     }
     // hvis brukeren skrev feil :(
     else {
