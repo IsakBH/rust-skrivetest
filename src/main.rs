@@ -80,6 +80,6 @@ fn main() {
     // hvis brukeren skrev feil :(
     else {
         println!("Det du skrev matchet ikke det du skulle skrive. Bad boy.");
-        write!(results_file, "Brukernavn: {:?} \nTid: {:?}\nResultat: SKRIVETEST FEILET \nOrd skrevet: {:?} \nSkrivetest: {:?} \n \n", username, local_time, user_text.trim_end(), text).expect("Kunne ikke skrive :(");
+        write!(results_file, "Brukernavn: {:?} \nTid: {:?}\nResultat: SKRIVETEST FEILET \nOrd skrevet: {:?} \nSkrivetest:  {:?} \n \n", username, local_time, user_text.trim_end(), text).expect("Kunne ikke skrive :(");
     }
 }
