@@ -27,7 +27,7 @@ fn main() {
         .read_line(&mut amount_of_words_wanted_input)
         .expect("Failed to read line");
 
-    let mut amount_of_words_wanted:usize = amount_of_words_wanted_input.trim().parse().expect("Det du skrev er ikke int");
+    let mut amount_of_words_wanted:usize = amount_of_words_wanted_input.trim().parse().expect("The input is either empty or what you wrote is not an int");
 
     let words = lines_from_file("src/norwegian.txt");
     println!("\nOrdboken har {:?} ord", words.len());
