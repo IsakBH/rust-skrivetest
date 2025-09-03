@@ -1,13 +1,15 @@
 use simple_stopwatch::Stopwatch;
-use std::io;
-use std::time::Duration;
-use std::fs::File;
-use std::fs::OpenOptions;
-use std::io::{prelude::*, BufReader};
-use std::path::Path;
 use rand::prelude::*;
 use whoami::username;
 use chrono::Local;
+use std:: {
+    fs::File,
+    fs::OpenOptions,
+    io::{prelude::*, BufReader},
+    io,
+    path::Path,
+    time::Duration,
+};
 
 fn lines_from_file(filename: impl AsRef<Path>) -> Vec<String> {
     let file = File::open(filename).expect("No such file :(");
