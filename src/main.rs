@@ -27,7 +27,7 @@ fn main() {
     let mut amount_of_words_wanted_input = String::new();
     io::stdin()
         .read_line(&mut amount_of_words_wanted_input)
-        .expect("Failed to read line");
+        .expect("Failed to read line for amount_of_words_wanted_input");
 
     let amount_of_words_wanted:usize = amount_of_words_wanted_input.trim().parse().expect("The input is either empty or what you wrote is not an int");
 
@@ -41,14 +41,14 @@ fn main() {
         .create(true)
         .append(true)
         .open("results/speeds.txt")
-        .expect("No such file :(");
+        .expect("Can't find speeds.txt :(");
 
     // spør om brukeren er klar for å skrive
     println!("Er du klar for å skrive? (Trykk enter)");
     let mut ready = String::new();
     io::stdin()
         .read_line(&mut ready)
-        .expect("Failed to read line");
+        .expect("Failed to read line to see if the user is ready");
     println!("Brukeren er klar.");
 
     // teller ned fra 5 slik at brukeren kan gjøre seg klar
@@ -72,7 +72,7 @@ fn main() {
     let mut user_text = String::new();
     io::stdin()
         .read_line(&mut user_text)
-        .expect("Failed to read line");
+        .expect("Failed to read user input for main part of test");
 
     // henter hvor mye tid brukeren brukte på å skrive
     let user_time = stopwatch.s();
