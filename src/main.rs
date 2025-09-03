@@ -11,6 +11,7 @@ use std:: {
     time::Duration,
 };
 
+// funksjon for å lese linjer fra fil
 fn lines_from_file(filename: impl AsRef<Path>) -> Vec<String> {
     let file = File::open(filename).expect("No such file :(");
     let buf = BufReader::new(file);
@@ -20,23 +21,29 @@ fn lines_from_file(filename: impl AsRef<Path>) -> Vec<String> {
 }
 
 fn main() {
+    // henter brukernavn og sier hei til brukeren
     let username = username();
     println!("Heisann, {username}");
 
+    // spør hvor mange ord brukeren vil ha i skrivetesten
     println!("Hvor mange ord vil du skrive i skrivetesten?");
     let mut amount_of_words_wanted_input = String::new();
     io::stdin()
         .read_line(&mut amount_of_words_wanted_input)
         .expect("Failed to read line for amount_of_words_wanted_input");
 
+    // trimmer og parser amount_of_words_wanted og gjør det om til en usize
     let amount_of_words_wanted:usize = amount_of_words_wanted_input.trim().parse().expect("The input is either empty or what you wrote is not an int");
 
+    // henter ord fra fil norwegian.txt
     let words = lines_from_file("src/norwegian.txt");
     println!("\nOrdboken har {:?} ord", words.len());
 
+    // velger brukerspesifisert antall tilfeldige ord fra ordlisten (norwegian.txt)
     let mut rng = rand::rng();
     let selection: Vec<_> = words.choose_multiple(&mut rng, amount_of_words_wanted).cloned().collect();
 
+    // åpner resultat filen. hvis den ikke finnes, så lager den den.
     let mut results_file = OpenOptions::new()
         .create(true)
         .append(true)
