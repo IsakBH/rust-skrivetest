@@ -21,11 +21,19 @@ fn main() {
     let username = username();
     println!("Heisann, {username}");
 
+    println!("Hvor mange ord vil du skrive i skrivetesten?");
+    let mut amount_of_words_wanted_input = String::new();
+    io::stdin()
+        .read_line(&mut amount_of_words_wanted_input)
+        .expect("Failed to read line");
+
+    let mut amount_of_words_wanted:usize = amount_of_words_wanted_input.trim().parse().expect("Det du skrev er ikke int");
+
     let words = lines_from_file("src/norwegian.txt");
-    println!("Ordboken har {:?} ord", words.len());
+    println!("\nOrdboken har {:?} ord", words.len());
 
     let mut rng = rand::rng();
-    let selection: Vec<_> = words.choose_multiple(&mut rng, 10).cloned().collect();
+    let selection: Vec<_> = words.choose_multiple(&mut rng, amount_of_words_wanted).cloned().collect();
 
     let mut results_file = OpenOptions::new()
         .create(true)
