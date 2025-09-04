@@ -4,15 +4,15 @@ Simpel CLI skrivetest skrevet i Rust (wow)
 ## Avhengigheter
 * rust
 ### Arch
-```bash
+```sh
 sudo pacman -S rustup
 ```
 ### Debian/Ubuntu
-```bash
+```sh
 sudo apt install rustup
 ```
 ### Fedora
-```bash
+```sh
 sudo dnf install rustup
 ```
 
