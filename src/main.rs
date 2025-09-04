@@ -1,15 +1,14 @@
-use simple_stopwatch::Stopwatch;
-use rand::prelude::*;
-use whoami::username;
 use chrono::Local;
-use std:: {
-    fs::File,
-    fs::OpenOptions,
-    io::{prelude::*, BufReader},
-    io,
+use rand::prelude::*;
+use simple_stopwatch::Stopwatch;
+use std::{
+    fs::{File, OpenOptions},
+    io::{self, prelude::*, BufReader},
+    iter::empty,
     path::Path,
     time::Duration,
 };
+use whoami::username;
 
 // funksjon for å lese linjer fra fil
 fn lines_from_file(filename: impl AsRef<Path>) -> Vec<String> {
@@ -33,7 +32,10 @@ fn main() {
         .expect("Failed to read line for amount_of_words_wanted_input");
 
     // trimmer og parser amount_of_words_wanted og gjør det om til en usize
-    let amount_of_words_wanted:usize = amount_of_words_wanted_input.trim().parse().expect("The input is either empty or what you wrote is not an int");
+    let amount_of_words_wanted = amount_of_words_wanted_input
+        .trim()
+        .parse()
+        .expect("The input is either empty or what you wrote is not an int");
 
     // henter ord fra fil norwegian.txt
     let words = lines_from_file("src/norwegian.txt");
@@ -41,7 +43,10 @@ fn main() {
 
     // velger brukerspesifisert antall tilfeldige ord fra ordlisten (norwegian.txt)
     let mut rng = rand::rng();
-    let selection: Vec<_> = words.choose_multiple(&mut rng, amount_of_words_wanted).cloned().collect();
+    let selection: Vec<_> = words
+        .choose_multiple(&mut rng, amount_of_words_wanted)
+        .cloned()
+        .collect();
 
     // åpner resultat filen. hvis den ikke finnes, så lager den den.
     let mut results_file = OpenOptions::new()
@@ -92,7 +97,15 @@ fn main() {
         println!("Du brukte {user_time} sekunder på å skrive det.");
         println!("Du skrev {:?} bokstaver.", amount_of_characters.len());
         println!("Ord i minuttet: {words_per_minute}");
-        write!(results_file, "Brukernavn: {:?} \nTid: {:?}\nResultat: {:?} WPM\nOrd skrevet: {:?}\n \n", username, local_time, words_per_minute, text).expect("Kunne ikke skrive :(")
+        write!(
+            results_file,
+            "Brukernavn: {:?} \n
+            Tid: {:?}\n
+            Resultat: {:?} WPM\n
+            Ord skrevet: {:?}\n \n",
+            username, local_time, words_per_minute, text
+        )
+        .expect("Kunne ikke skrive :(")
     }
     // hvis brukeren skrev feil :(
     else {
