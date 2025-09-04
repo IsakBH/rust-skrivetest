@@ -4,7 +4,6 @@ use simple_stopwatch::Stopwatch;
 use std::{
     fs::{File, OpenOptions},
     io::{self, prelude::*, BufReader},
-    iter::empty,
     path::Path,
     time::Duration,
 };
