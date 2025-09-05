@@ -5,7 +5,7 @@ use std::{
     fs::{File, OpenOptions},
     io::{self, prelude::*, BufReader},
     path::Path,
-    time::Duration,
+    time::Duration, usize,
 };
 use whoami::username;
 
@@ -33,8 +33,8 @@ fn main() {
     // trimmer og parser amount_of_words_wanted og gjør det om til en usize
     let amount_of_words_wanted = amount_of_words_wanted_input
         .trim()
-        .parse()
-        .expect("The input is either empty or what you wrote is not an int");
+        .parse::<usize>()
+        .unwrap_or(10);
 
     // henter ord fra fil norwegian.txt
     let words = lines_from_file("src/norwegian.txt");
