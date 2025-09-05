@@ -25,6 +25,10 @@ git clone https://github.com/isakbh/rust-skrivetest
 ## Bruk
 Kjør programmet med cargo
 ```bash
+cd rust-skrivetest
+```
+
+```bash
 cargo run
 ```
 
