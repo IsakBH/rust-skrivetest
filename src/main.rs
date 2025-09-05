@@ -37,7 +37,7 @@ fn main() {
         .unwrap_or(10);
 
     // henter ord fra fil norwegian.txt
-    let words = lines_from_file("src/norwegian.txt");
+    let words = lines_from_file("src/norwegian-dictionary.txt");
     println!("\nOrdboken har {:?} ord", words.len());
 
     // velger brukerspesifisert antall tilfeldige ord fra ordlisten (norwegian.txt)
