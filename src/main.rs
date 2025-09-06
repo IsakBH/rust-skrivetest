@@ -63,16 +63,10 @@ fn main() {
     println!("Brukeren er klar.");
 
     // teller ned fra 5 slik at brukeren kan gjøre seg klar
-    println!("5..");
-    std::thread::sleep(Duration::from_millis(1000));
-    println!("4..");
-    std::thread::sleep(Duration::from_millis(1000));
-    println!("3..");
-    std::thread::sleep(Duration::from_millis(1000));
-    println!("2..");
-    std::thread::sleep(Duration::from_millis(1000));
-    println!("1..");
-    std::thread::sleep(Duration::from_millis(1000));
+    for i in 1..6 {
+        println!("{}", i);
+        std::thread::sleep(Duration::from_secs(1));
+    }
 
     let text = selection.join(" ");
     let amount_of_characters: Vec<_> = text.split("").collect();
