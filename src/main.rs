@@ -70,7 +70,7 @@ fn main() {
     }
 
     let text = selection.join(" ");
-    let amount_of_characters: Vec<_> = text.split("").collect();
+    let amount_of_characters = text.len();
     println!("Yo, du skal skrive dette:\n{text}");
     let stopwatch = Stopwatch::start_new();
 
@@ -82,14 +82,13 @@ fn main() {
 
     // henter hvor mye tid brukeren brukte på å skrive
     let user_time = stopwatch.s();
-    let amount_of_words = amount_of_characters.len() / 5;
-    let words_per_minute = amount_of_words as f32 / user_time as f32 * 60.0;
+    let words_per_minute = (amount_of_characters as f32 / 5.0) / user_time * 60.0; // ett ord = 5 bokstaver | ord i minuttet = antall ord skrevet delt på tiden brukt ganger 60
     let local_time = Local::now().format("%Y-%m-%d %H:%M:%S").to_string();
 
     // hvis burkeren skrev riktig :)
     if user_text.trim_end() == text {
         println!("Du brukte {user_time} sekunder på å skrive det.");
-        println!("Du skrev {:?} bokstaver.", amount_of_characters.len());
+        println!("Du skrev {:?} bokstaver.", amount_of_characters);
         println!("Ord i minuttet: {words_per_minute}");
         write!(
             results_file,
