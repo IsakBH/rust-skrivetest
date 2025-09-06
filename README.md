@@ -1,5 +1,6 @@
 # Rust Skrivetest
-Simpel CLI skrivetest skrevet i Rust (wow)
+Simpel CLI skrivetest skrevet i Rust (wow) <br>
+<img width="615" height="402" alt="image" src="https://github.com/user-attachments/assets/a987d248-8489-45df-948d-a0c6aa309056" />
 
 ## Avhengigheter
 * rust
