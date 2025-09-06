@@ -1,13 +1,13 @@
-use chrono::Local;
-use rand::prelude::*;
 use simple_stopwatch::Stopwatch;
-use std::{
-    fs::{File, OpenOptions},
-    io::{self, prelude::*, BufReader},
-    path::Path,
-    time::Duration, usize,
-};
+use rand::prelude::*;
 use whoami::username;
+use chrono::Local;
+use std::{
+    io::{self, prelude::*, BufReader},
+    fs::{File, OpenOptions},
+    time::Duration, usize,
+    path::Path,
+};
 
 // funksjon for å lese linjer fra fil
 fn lines_from_file(filename: impl AsRef<Path>) -> Vec<String> {
