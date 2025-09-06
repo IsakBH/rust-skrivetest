@@ -15,6 +15,10 @@ sudo apt install rustup
 ```sh
 sudo dnf install rustup
 ```
+### Windows
+```sh
+winget install rustup
+```
 
 ## Installasjon
 Clone repo-en
