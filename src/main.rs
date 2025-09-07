@@ -62,12 +62,14 @@ fn main() {
         .expect("Failed to read line to see if the user is ready");
     println!("Brukeren er klar.");
 
+
     // teller ned fra 5 slik at brukeren kan gjøre seg klar
     for i in (1..6).rev() {
         let dots = ".".repeat(i);
         println!("{}{}", i, dots);
         std::thread::sleep(Duration::from_secs(1));
     }
+
 
     let text = selection.join(" ");
     let amount_of_characters = text.len();
