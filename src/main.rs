@@ -40,7 +40,7 @@ fn main() {
     let words = lines_from_file("src/norwegian-dictionary.txt");
     println!("\nOrdboken har {:?} ord", words.len());
 
-    // velger brukerspesifisert antall tilfeldige ord fra ordlisten (norwegian.txt)
+    // velger brukerspesifisert antall tilfeldige og unike ord fra ordlisten
     let mut rng = rand::rng();
     let selection: Vec<_> = words
         .choose_multiple(&mut rng, amount_of_words_wanted)
